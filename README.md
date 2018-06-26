@@ -7,15 +7,13 @@ In order to run the applications:
 
   npm: `$ npm install`
 
-  yarn: `$ yarn install` / `$ yarn`
-
 ### 2. Build an assets and run the server
 
 **For Development**
 
 build the assets and run the server:
 
-   `$ npm run dev` / `$ yarn run dev`
+   `$ npm run dev`
 
 **For Production**
 
