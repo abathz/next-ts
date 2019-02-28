@@ -1,4 +1,4 @@
-# NextJS with Typescript
+# Next.js with Typescript
 This is my new repo using NextJS with Typescript config.
 
 * [Next.js](https://github.com/zeit/next.js) (React Framework) - React server-rendered
