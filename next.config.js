@@ -3,29 +3,22 @@ const webpack = require('webpack')
 const withCss = require('@zeit/next-css')
 const withSass = require('@zeit/next-sass')
 const withTypescript = require('@zeit/next-typescript')
-const commonsChunkConfig = require('@zeit/next-css/commons-chunk-config')
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 
 module.exports = withTypescript(withCss(withSass({
-  webpack (config, options) {
-    if (!options.isServer) {
-      config = commonsChunkConfig(config, /\.(scss|css)$/)
-    }
-    config.module.rules.push({
-      test: /\.(woff|woff2|eot|ttf|otf)$/,
-      use: 'file-loader?name=static/fonts/[name].[ext]'
-    })
+  webpack (config) {
     config.resolve.alias = {
-      container: path.resolve(__dirname, 'src/container'),
+      ...(config.resolve.alias || {}),
+      containers: path.resolve(__dirname, 'src/containers'),
       components: path.resolve(__dirname, 'src/components'),
       actions: path.resolve(__dirname, 'src/actions'),
       reducers: path.resolve(__dirname, 'src/reducers'),
-      routes: path.resolve(__dirname, './routes')
+      routes: path.resolve(__dirname, './routes'),
+      styled: path.resolve(__dirname, './src/styled-components')
     }
-    config.plugins.push(
-      new webpack.ProvidePlugin({
-        '_': 'lodash'
-      })
-    )
+
+    config.plugins.push(new LodashModuleReplacementPlugin())
+    config.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/))
 
     return config
   }

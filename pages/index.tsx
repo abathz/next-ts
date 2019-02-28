@@ -1,10 +1,10 @@
 import * as React from 'react'
-import Main from 'components/Main'
+import Main from 'containers/Main'
 
 export default class extends React.Component<{}, {}> {
   render () {
     return (
-      <Main />
+      <Main/>
     )
   }
 }
