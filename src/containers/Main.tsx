@@ -1,14 +1,14 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators, Dispatch, AnyAction } from 'redux'
 import { getFullName } from 'actions'
-import Title from 'components/Title'
-import Button from 'components/Button'
+import { Title, Button } from 'components'
 
-interface StateProps {
+type StateProps = {
   name: string
 }
 
-interface DispatchProps {
+type DispatchProps = {
   getFullName: typeof getFullName
 }
 
@@ -32,15 +32,14 @@ class Main extends PureComponent<PropsComponent, StateComponent> {
   }
 }
 
-const mapStateToProps = ({ simple }: any) => {
+const mapStateToProps = ({ simple }: any): StateProps => {
   const { name } = simple
 
   return { name }
 }
 
-const mapDispatchToProps = (dispatch: any) => ({
-  getFullName,
-  dispatch
-})
+const mapDispatchToProps = (dispatch: Dispatch<AnyAction>): DispatchProps => bindActionCreators({
+  getFullName
+}, dispatch)
 
 export default connect<StateProps, DispatchProps>(mapStateToProps, mapDispatchToProps)(Main)

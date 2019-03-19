@@ -6,13 +6,14 @@ const withTypescript = require('@zeit/next-typescript')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 
 module.exports = withTypescript(withCss(withSass({
-  webpack (config) {
+  webpack(config) {
+    config.resolve.extensions.push('.js')
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
-      containers: path.resolve(__dirname, 'src/containers'),
-      components: path.resolve(__dirname, 'src/components'),
-      actions: path.resolve(__dirname, 'src/actions'),
-      reducers: path.resolve(__dirname, 'src/reducers'),
+      containers: path.resolve(__dirname, './src/containers'),
+      components: path.resolve(__dirname, './src/components'),
+      actions: path.resolve(__dirname, './src/actions'),
+      reducers: path.resolve(__dirname, './src/reducers'),
       routes: path.resolve(__dirname, './routes'),
       styled: path.resolve(__dirname, './src/styled-components')
     }
