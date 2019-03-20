@@ -25,7 +25,7 @@ class Main extends PureComponent<PropsComponent, StateComponent> {
     return (
       <>
         <Title className='mb-3'>Welcome to NextJS with Typescript</Title>
-        <Button onClick={this.onButtonClicked}>View Name</Button>
+        <Button className='mb-3' onClick={this.onButtonClicked}>View Name</Button>
         <p>{this.props.name}</p>
       </>
     )
