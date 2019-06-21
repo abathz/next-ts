@@ -2,7 +2,7 @@
 This is my new repo using NextJS with Typescript config.
 
 * [Next.js](https://github.com/zeit/next.js) (React Framework) - React server-rendered
-* [styled-components](https://github.com/styled-components/styled-components) - Styling components
+* [Emotion](https://github.com/emotion-js/emotion) - Styling components (_**out-of-box SSR support!!**_)
 * [next-routes](https://github.com/fridays/next-routes) - Universal dynamic routes for Next.js
 * [reactstrap](https://github.com/reactstrap/reactstrap) - Bootstrap v4 Components Based (*just use for layouting*)
 * TSLint using config from [Standard Javascript Style](https://standardjs.com/)
