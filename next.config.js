@@ -4,6 +4,7 @@ const withCss = require('@zeit/next-css')
 const withSass = require('@zeit/next-sass')
 const withTypescript = require('@zeit/next-typescript')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = withTypescript(withCss(withSass({
   webpack(config) {
@@ -18,6 +19,12 @@ module.exports = withTypescript(withCss(withSass({
       styled: path.resolve(__dirname, './src/styled-components')
     }
 
+    config.plugins.push(
+      new Dotenv({
+        path: path.join(__dirname, '.env'),
+        systemvars: true
+      })
+    );
     config.plugins.push(new LodashModuleReplacementPlugin())
     config.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/))
 

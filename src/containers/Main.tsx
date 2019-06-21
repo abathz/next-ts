@@ -32,9 +32,7 @@ class Main extends PureComponent<PropsComponent, StateComponent> {
   }
 }
 
-const mapStateToProps = ({ simple }: any): StateProps => {
-  const { name } = simple
-
+const mapStateToProps = ({ name }: any): StateProps => {
   return { name }
 }
 

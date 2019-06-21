@@ -39,7 +39,7 @@
     "paths": {
       "actions": [ "src/actions" ],
       "actions/types": [ "src/actions/types" ],
-      "reducers": [ "src/reducers" ],
+      "reducers": [ "src/redux" ],
       "containers/*": [ "src/containers/*" ],
       "components": [ "src/components" ],
       "styled": [ "src/styled-components" ]
