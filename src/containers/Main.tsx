@@ -1,43 +1,41 @@
-import React, { PureComponent } from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators, Dispatch, AnyAction } from 'redux'
-import { getFullName } from 'actions'
-import { Title, Button } from 'components'
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { getFullName } from 'api';
+import { Title, Button } from 'components';
 
-type StateProps = {
-  name: string
+interface StateProps {
+    name: string;
 }
 
-type DispatchProps = {
-  getFullName: typeof getFullName
+interface DispatchProps {
+    getFullName: typeof getFullName;
 }
 
-type PropsComponent = StateProps & DispatchProps
-type StateComponent = {}
+type PropsComponent = StateProps & DispatchProps;
+interface StateComponent { }
 
 class Main extends PureComponent<PropsComponent, StateComponent> {
+    onButtonClicked = () => {
+        this.props.getFullName();
+    };
 
-  onButtonClicked = () => {
-    this.props.getFullName()
-  }
-
-  render () {
-    return (
-      <>
-        <Title className='mb-3'>Welcome to NextJS with Typescript</Title>
-        <Button className='mb-3' onClick={this.onButtonClicked}>View Name</Button>
-        <p>{this.props.name}</p>
-      </>
-    )
-  }
+    render() {
+        return (
+            <>
+                <Title className='mb-3'>Welcome to NextJS with Typescript</Title>
+                <Button className='mb-3' onClick={this.onButtonClicked}>
+                    View Name
+                </Button>
+                <p>{this.props.name}</p>
+            </>
+        );
+    }
 }
 
-const mapStateToProps = ({ name }: any): StateProps => {
-  return { name }
-}
+const mapStateToProps = ({ name }: any): StateProps => ({ name });
 
-const mapDispatchToProps = (dispatch: Dispatch<AnyAction>): DispatchProps => bindActionCreators({
-  getFullName
-}, dispatch)
-
-export default connect<StateProps, DispatchProps>(mapStateToProps, mapDispatchToProps)(Main)
+export default connect<StateProps>(
+    mapStateToProps,
+    { getFullName }
+)(Main);

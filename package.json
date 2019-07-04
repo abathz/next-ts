@@ -23,11 +23,9 @@
     "bootstrap": "^4.3.1",
     "express": "^4.17.1",
     "immutability-helper": "^3.0.1",
-    "jquery": "^3.3.1",
     "next": "^8.1.0",
     "next-routes": "^1.4.2",
     "next-seo": "^1.11.2",
-    "popper.js": "^1.14.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
@@ -44,8 +42,11 @@
     "dotenv-webpack": "^1.7.0",
     "lodash-webpack-plugin": "^0.11.5",
     "node-sass": "^4.12.0",
+    "prettier": "^1.18.2",
     "tslint": "^5.17.0",
+    "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1",
+    "tslint-plugin-prettier": "^2.0.1",
     "tslint-react": "^4.0.0",
     "typescript": "^3.5.2"
   }

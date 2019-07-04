@@ -1,9 +1,9 @@
-export type State = {
-  name: string
+export interface State {
+    name: string;
 }
 
 const initialState: State = {
-  name: ''
-}
+    name: ''
+};
 
-export default initialState
+export default initialState;

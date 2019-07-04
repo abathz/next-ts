@@ -1,8 +1,7 @@
-import { combineReducers } from 'redux'
-import { reduceReducers } from './reduxUtils'
-import initialState from './intialState'
-import simple from './reducers/simple'
+import { reduceReducers } from './reduxUtils';
+import initialState from './intialState';
+import simple from './reducers/simple';
 
-const reducers = reduceReducers(initialState, simple)
+const reducers = reduceReducers(initialState, simple);
 
-export default reducers
+export default reducers;
