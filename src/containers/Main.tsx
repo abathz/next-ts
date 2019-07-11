@@ -1,19 +1,19 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
-import { getFullName } from 'api';
+import { getFullName } from 'actions/simple';
 import { Title, Button } from 'components';
+import { Link } from 'routes';
 
 interface StateProps {
     name: string;
 }
 
 interface DispatchProps {
-    getFullName: typeof getFullName;
+    getFullName?: typeof getFullName | any;
 }
 
 type PropsComponent = StateProps & DispatchProps;
-interface StateComponent { }
+interface StateComponent {}
 
 class Main extends PureComponent<PropsComponent, StateComponent> {
     onButtonClicked = () => {
@@ -27,6 +27,9 @@ class Main extends PureComponent<PropsComponent, StateComponent> {
                 <Button className='mb-3' onClick={this.onButtonClicked}>
                     View Name
                 </Button>
+                <Link route='about'>
+                    <a className='text-decoration-none text-primary'>About</a>
+                </Link>
                 <p>{this.props.name}</p>
             </>
         );
@@ -35,7 +38,7 @@ class Main extends PureComponent<PropsComponent, StateComponent> {
 
 const mapStateToProps = ({ name }: any): StateProps => ({ name });
 
-export default connect<StateProps>(
+export default connect<StateProps, DispatchProps>(
     mapStateToProps,
     { getFullName }
 )(Main);

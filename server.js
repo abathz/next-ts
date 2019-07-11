@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express')
 const next = require('next')
+const path = require('path')
 const routes = require('./routes')
 
 const port = parseInt(process.env.PORT, 10) || 3000
@@ -13,13 +14,11 @@ app.prepare().then(() => {
 
     server.use(handler)
 
-    server.get('*', (req, res) => {
-        res.setHeader('Service-Worker-Allowed', '/')
-        return handler(req, res)
-    })
-
     server.listen(port, (err) => {
         if (err) throw err
-        console.log(`>[${dev ? 'Development' : 'Production'}] Ready on http://localhost:${port}`)
+        console.log(`> [${dev ? 'Development' : 'Production'}] Ready on http://localhost:${port}`)
     })
+}).catch((ex) => {
+    console.error(ex.stack)
+    process.exit(1)
 })

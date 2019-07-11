@@ -1,5 +1,5 @@
 import { ThunkDispatch } from 'redux-thunk';
-import { GET_FULLNAME } from 'api/types';
+import { GET_FULLNAME } from '../types';
 
 const arr = [1, 2, 3, 4, 5, 6, 7];
 

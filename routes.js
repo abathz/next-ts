@@ -1,7 +1,5 @@
 const Routes = require('next-routes')
-const routes = Routes()
+const routes = (module.exports = Routes())
 
 routes.add('home', '/', 'index')
 routes.add('about', '/about', 'about')
-
-module.exports = routes

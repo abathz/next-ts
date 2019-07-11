@@ -1,6 +1,6 @@
 import update from 'immutability-helper';
 import { AnyAction } from 'redux';
-import { GET_FULLNAME } from 'api/types';
+import { GET_FULLNAME } from '../types';
 import initialState, { State } from '../intialState';
 import { createReducer } from '../reduxUtils';
 
