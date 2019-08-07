@@ -1,21 +1,20 @@
-import React, { PureComponent } from 'react';
+import React, { Component, MouseEvent } from 'react';
 import { connect } from 'react-redux';
+import { Dispatch, bindActionCreators } from 'redux';
 import { getFullName } from 'actions/simple';
 import { Title, Button } from 'components';
 import Link from 'next/link';
 
+interface OwnProps {}
 interface StateProps {
     name: string;
 }
+type DispatchProps = ReturnType<typeof mapDispatchToProps>;
 
-interface DispatchProps {
-    getFullName?: typeof getFullName | any;
-}
-
-type PropsComponent = StateProps & DispatchProps;
+type PropsComponent = OwnProps & StateProps & DispatchProps;
 interface StateComponent {}
 
-class Main extends PureComponent<PropsComponent, StateComponent> {
+class Main extends Component<PropsComponent, StateComponent> {
     onButtonClicked = () => {
         this.props.getFullName();
     };
@@ -24,9 +23,7 @@ class Main extends PureComponent<PropsComponent, StateComponent> {
         return (
             <>
                 <Title className='mb-3'>Welcome to NextJS with Typescript</Title>
-                <Button className='mb-3' onClick={this.onButtonClicked}>
-                    View Name
-                </Button>
+                <Button onClick={this.onButtonClicked}>View Name</Button>
                 <Link href='/about'>
                     <a className='text-decoration-none text-primary'>About</a>
                 </Link>
@@ -36,9 +33,11 @@ class Main extends PureComponent<PropsComponent, StateComponent> {
     }
 }
 
-const mapStateToProps = ({ name }: any): StateProps => ({ name });
+const mapStateToProps = ({ name }: StateProps, ownProps: OwnProps) => ({ name, ...ownProps });
 
-export default connect<StateProps, DispatchProps>(
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({ getFullName }, dispatch);
+
+export default connect(
     mapStateToProps,
-    { getFullName }
+    mapDispatchToProps
 )(Main);

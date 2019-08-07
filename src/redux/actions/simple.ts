@@ -1,16 +1,6 @@
-import { ThunkDispatch } from 'redux-thunk';
+import { Dispatch } from 'redux';
 import { GET_FULLNAME } from '../types';
 
-const arr = [1, 2, 3, 4, 5, 6, 7];
-
-export const getFullName = () => async (dispatch: ThunkDispatch<{}, {}, any>) => {
-    const isTrue = true;
-    const test = { isTrue };
-
-    dispatch({
-        type: GET_FULLNAME,
-        payload: 'Adli Fariz Bonaputra'
-    });
+export const getFullName = () => async (dispatch: Dispatch): Promise<any> => {
+    dispatch({ type: GET_FULLNAME, payload: 'Adli Fariz Bonaputra' });
 };
-
-export const ya = () => 'a';

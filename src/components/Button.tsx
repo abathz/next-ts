@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const Button = styled('button')`
+const Button = styled.button`
     padding: 10px 5px;
 `;
 
